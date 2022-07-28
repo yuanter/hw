@@ -69,5 +69,5 @@ def checkin(cookie):
 if __name__ == '__main__':
     user_map = get_cookie()
     for i in range(len(user_map)):
-         print('账号信息为：{}'.format(user_map[i]))
+        print('账号信息为：{}'.format(user_map[i]))
         checkin(aitk_login(user_map[i]))
