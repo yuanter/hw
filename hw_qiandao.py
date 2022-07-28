@@ -27,7 +27,7 @@ def get_cookie():
     cookies = get_envs("HWLSP_COOKIE")
     for ck in cookies:
         if ck.get('status') == 0:
-            ck_list.append(ck)
+            ck_list.append(ck.get('value'))
     if len(ck_list) < 1:
         print('共配置{}条CK,请添加环境变量,或查看环境变量状态'.format(len(ck_list)))
     return ck_list
