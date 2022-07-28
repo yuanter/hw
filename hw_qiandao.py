@@ -69,4 +69,5 @@ def checkin(cookie):
 if __name__ == '__main__':
     user_map = get_cookie()
     for i in range(len(user_map)):
+         print('共配置{}条CK,请添加环境变量,或查看环境变量状态'.format(user_map[i]))
         checkin(aitk_login(user_map[i]))
