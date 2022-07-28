@@ -67,8 +67,6 @@ def checkin(cookie):
 
 
 if __name__ == '__main__':
+    user_map = get_cookie()
     for i in range(len(user_map)):
-        #checkin(aitk_login(user_map[i]))
-        user_map = get_cookie()
-        for ck in user_map:
-            checkin(aitk_login(ck))
+        checkin(aitk_login(user_map[i]))
