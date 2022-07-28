@@ -14,10 +14,10 @@ from ql_api import get_envs, disable_env, post_envs, put_envs
 
 
 # 账号or邮箱 密码 格式如下: xxx&pwd=xxx
-user_map = [
-    'xxx&pwd=xxx',
-    'xxx&pwd=xxx',
-]
+#user_map = [
+#    'xxx&pwd=xxx',
+#    'xxx&pwd=xxx',
+#]
 
 # 获取要执行兑换的cookie
 def get_cookie():
@@ -69,4 +69,6 @@ def checkin(cookie):
 if __name__ == '__main__':
     for i in range(len(user_map)):
         #checkin(aitk_login(user_map[i]))
-        checkin(aitk_login(get_cookie())
+        user_map = get_cookie()
+        for ck in user_map:
+            checkin(aitk_login(ck))
