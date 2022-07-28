@@ -14,10 +14,11 @@ from ql_api import get_envs, disable_env, post_envs, put_envs
 
 
 # 账号or邮箱 密码 格式如下: xxx&pwd=xxx
-#user_map = [
-#    'xxx&pwd=xxx',
-#    'xxx&pwd=xxx',
-#]
+# https://aitk.app/wp-login.php签到
+# 青龙变量名称  
+# HWLSP_COOKIE
+# 变量值：  
+# 账号or邮箱 密码 格式如下: xxx&pwd=xxx
 
 # 获取要执行兑换的cookie
 def get_cookie():
