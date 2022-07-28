@@ -38,13 +38,13 @@ def aitk_login(user):
     headers = {
         'referer': 'https://aitk.app/wp-login.php',
         'content-type': 'application/x-www-form-urlencoded;',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
     }
     data = 'log='+user+'&rememberme=forever&wp-submit=%E7%99%BB%E5%BD%95&redirect_to=https%3A%2F%2Faitk.app%2Fwp-admin%2F&testcookie=1'
     try:
         res = requests.post(url, headers=headers, data=data).headers.get('set-cookie')
         array = re.split('[;,]', res)
-        return array[5].strip()
+        return array[7].strip()
     except:
         print("请检查用户信息是否正确")
 
@@ -57,9 +57,10 @@ def checkin(cookie):
         'referer': 'https://aitk.app/user?pd=money',
         'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'cookie': cookie,
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
     }
-    res = requests.get(url, headers=headers).json()
+    r = requests.get(url, headers=headers)
+    res = r.json()
     if res['status'] == 200:
         print("签到成功",res)
     else:
