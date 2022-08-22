@@ -63,11 +63,9 @@ def checkin(user,cookie):
     r = requests.get(url, headers=headers)
     res = r.json()
     if res['status'] == 200:
-        #print("签到成功",res)
-        print('账号信息：{},签到成功：{}'.format(user,res))
+        print('账号信息：{},签到成功：{}\n'.format(user,res))
     else:
-        print('账号信息：{},签到状态：{}'.format(user,res))
-        #print(res)
+        print('账号信息：{},签到状态：{}\n'.format(user,res))
 
 
 if __name__ == '__main__':
