@@ -45,12 +45,12 @@ def aitk_login(user):
     try:
         res = requests.post(url, headers=headers, data=data).headers.get('set-cookie')
         array = re.split('[;,]', res)
-        return array[7].strip()
+        return array[5].strip()
     except:
         print("请检查用户信息是否正确")
 
 
-def checkin(cookie):
+def checkin(user,cookie):
     if cookie is None:
         return
     url = 'https://aitk.app/wp-admin/admin-ajax.php?action=epd_checkin'
@@ -63,13 +63,15 @@ def checkin(cookie):
     r = requests.get(url, headers=headers)
     res = r.json()
     if res['status'] == 200:
-        print("签到成功",res)
+        #print("签到成功",res)
+        print('账号信息：{},签到成功：{}'.format(user,res))
     else:
-        print(res)
+        print('账号信息：{},签到状态：{}'.format(user,res))
+        #print(res)
 
 
 if __name__ == '__main__':
     user_map = get_cookie()
     for i in range(len(user_map)):
         #print('账号信息为：{}'.format(user_map[i]))
-        checkin(aitk_login(user_map[i]))
+        checkin(user_map[i],aitk_login(user_map[i]))
