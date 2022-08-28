@@ -9,6 +9,8 @@ import os
 import requests, time, re,datetime,json,random
 from ql_api import get_envs, disable_env, post_envs, put_envs
 
+txt = open(r'IDs.txt','a+')
+txt.close()
 
 #这里是微信推送PUSH_PLUS_TOKEN
 PUSH_PLUS_TOKEN = ""
