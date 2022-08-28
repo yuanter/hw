@@ -88,7 +88,7 @@ def main(cookie,sid):
                 'siteid': 1000,
                 'lpage': 1,
                 'classid': 177,
-                'sid': sid; ,
+                'sid': sid,
                 'g': '快速回复'
             }
             req_url = 'https://yaohuo.me/bbs/book_re.aspx'
