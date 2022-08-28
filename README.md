@@ -13,4 +13,4 @@ HWLSP_COOKIE
 ### 青龙变量名称  
 yaohuo_COOKIE
 ### 变量值：  
-提取整串妖火CK，如果sidyaohuo=xxxx没有后面的分号，请加上英文格式的分号;
+提取整串妖火CK，如果sidyaohuo=xxxx后面没有分号，请加上英文格式的分号;
