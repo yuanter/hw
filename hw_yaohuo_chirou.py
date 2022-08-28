@@ -17,7 +17,7 @@ PUSH_PLUS_TOKEN = os.getenv("PUSH_PLUS_TOKEN", PUSH_PLUS_TOKEN)
 if PUSH_PLUS_TOKEN is None:
     PUSH_PLUS_TOKEN = ""
 
-Rou_IDs = open(r'IDs.txt','r+w', encoding='utf-8')
+Rou_IDs = open(r'IDs.txt','w+', encoding='utf-8')
 
 def Get_ID():
     IDs=[]
