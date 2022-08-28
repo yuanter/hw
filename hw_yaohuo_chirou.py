@@ -20,7 +20,12 @@ if PUSH_PLUS_TOKEN is None:
 
 Rou_IDs = open(r'IDs.txt','w+', encoding='utf-8')
 
-def Get_ID():
+def Get_ID(cookie):
+    HEADERS = {
+    'Cookie': cookie,
+    'Host': 'yaohuo.me',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
+    }
     IDs=[]
     for i in range(1,10):
         url = 'https://yaohuo.me/bbs/book_list.aspx?action=new&siteid=1000&classid=0&getTotal=2022&page='+str(i)
@@ -61,7 +66,7 @@ def main(cookie,sid):
         dic.append(item)
     date  = str(datetime.date.today())
     Stime = int(str(datetime.date.today()).split('-')[2])
-    IDs = Get_ID()
+    IDs = Get_ID(cookie)
     i =0
     for ID in IDs:
         if str(ID) in dic:
