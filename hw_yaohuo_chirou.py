@@ -3,8 +3,8 @@ cron: 0/30 18,22 * *
 new Env('妖火吃肉肉');
 """
 #一共改3个地方
-#1.第6行，微信PUSH_PLUS_TOKEN
-#2.第13行，cookie
+#1.青龙变量新增PUSH_PLUS_TOKEN
+#2.青龙变量新增yaohuo_COOKIE
 #第72、90行,从cookie里面找到sid加进去
 import os
 import requests, time, re,datetime,json,random
