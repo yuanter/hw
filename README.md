@@ -10,7 +10,6 @@
 * 账号or邮箱 密码 格式如下: xxx&pwd=xxx
 
 # 妖火吃肉
-### 拉取脚本完毕后，在同级目录新增一个IDs.txt文件
 ### 需要使用pushplus时，请新建青龙变量PUSH_PLUS_TOKEN，变量值为它的token
 ### 使用
 * ### 青龙变量名称  
