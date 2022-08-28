@@ -49,7 +49,7 @@ def get_cookie():
     return ck_list 
 
 def main(cookie,sid):
-    Rou_IDs = open(r'IDs.txt','w+', encoding='utf-8')
+    Rou_IDs = open(r'IDs.txt','r+', encoding='utf-8')
     HEADERS = {
     'Cookie': cookie,
     'Host': 'yaohuo.me',
