@@ -178,5 +178,5 @@ if __name__ == '__main__':
     for i in range(len(user_map)):
         #array = re.split('[;,]', user_map[i])
         sid=re.findall(r"sidyaohuo=(.+?);",user_map[i])
-        print('sid账号信息为：{}\n'.format(sid))
+        print('sid账号信息为：{}'.format(sid))
         main(user_map[i],sid)
