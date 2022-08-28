@@ -11,8 +11,10 @@ import requests, time, re,datetime,json,random
 
 
 #这里是微信推送PUSH_PLUS_TOKEN
-global PUSH_PLUS_TOKEN
+global PUSH_PLUS_TOKEN = ""
 # 从环境变量获取url,不存在则从配置获取
+if PUSH_PLUS_TOKEN is None:
+    PUSH_PLUS_TOKEN = ""
 PUSH_PLUS_TOKEN = os.getenv("PUSH_PLUS_TOKEN", PUSH_PLUS_TOKEN)
 
 Rou_IDs = open(r'IDs.txt','r+')
