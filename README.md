@@ -10,7 +10,8 @@ HWLSP_COOKIE
 账号or邮箱 密码 格式如下: xxx&pwd=xxx
 
 # 妖火吃肉
-### 青龙变量名称  
-yaohuo_COOKIE
-### 变量值：  
-提取整串妖火CK，如果sidyaohuo=xxxx后面没有分号，请加上英文格式的分号;
+* 拉取脚本完毕后，在同级目录新增一个IDs.txt文件
+* ### 青龙变量名称  
+* yaohuo_COOKIE
+* ### 变量值：  
+* 提取整串妖火CK，如果sidyaohuo=xxxx后面没有分号，请加上英文格式的分号;
