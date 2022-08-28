@@ -8,6 +8,7 @@ new Env('妖火吃肉肉');
 #第72、90行,从cookie里面找到sid加进去
 import os
 import requests, time, re,datetime,json,random
+from ql_api import get_envs, disable_env, post_envs, put_envs
 
 
 #这里是微信推送PUSH_PLUS_TOKEN
