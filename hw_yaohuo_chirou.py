@@ -2,10 +2,9 @@
 cron: 0/30 18,22 * *
 new Env('妖火吃肉肉');
 """
-#一共改3个地方
+#青龙变量一共新增2个地方
 #1.青龙变量新增PUSH_PLUS_TOKEN
 #2.青龙变量新增yaohuo_COOKIE
-#第72、90行,从cookie里面找到sid加进去
 import os
 import requests, time, re,datetime,json,random
 from ql_api import get_envs, disable_env, post_envs, put_envs
@@ -61,7 +60,7 @@ def main(cookie,sid):
     YaoJing = 0
     JingYan = 0
     dic=[]
-    reqtext = ["chi", "吃", "c", "恰", "奥利给", "吃了", "吃吃吃","吃吃"]
+    reqtext = ["chi", "吃", "c", "恰", "吃肉", "吃了", "吃吃吃","吃吃"]
     for item in Rou_IDs:
         item = item.replace('\n','')
         dic.append(item)
