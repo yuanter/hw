@@ -17,8 +17,6 @@ PUSH_PLUS_TOKEN = os.getenv("PUSH_PLUS_TOKEN", PUSH_PLUS_TOKEN)
 if PUSH_PLUS_TOKEN is None:
     PUSH_PLUS_TOKEN = ""
 
-Rou_IDs = open(r'IDs.txt','w+', encoding='utf-8')
-
 def Get_ID(cookie):
     HEADERS = {
     'Cookie': cookie,
@@ -135,8 +133,7 @@ def main(cookie,sid):
             JingYan = JingYan+ int(msg[1])
             print(ID)
        #time.sleep(2)
-
-    Rou_IDs.close()
+    
     print(YaoJing)
     print(JingYan)
     message = "****妖火吃肉助手****\n"
