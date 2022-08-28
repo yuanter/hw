@@ -1,5 +1,5 @@
 """
-cron: 22 22 * * *
+cron: 10 0,6-23 * * *
 new Env('妖火吃肉肉');
 """
 #青龙变量一共新增2个地方
@@ -62,7 +62,7 @@ def main(cookie,sid):
     for item in Rou_IDs:
         item = item.replace('\n','')
         dic.append(item)
-    print('吃过肉的帖子：{}'.format(dic))
+    #print('吃过肉的帖子：{}'.format(dic))
     date  = str(datetime.date.today())
     Stime = int(str(datetime.date.today()).split('-')[2])
     IDs = Get_ID(cookie)
