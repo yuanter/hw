@@ -1,5 +1,5 @@
 """
-cron: 0/30 14,18 * *
+cron: 0/30 18,22 * *
 new Env('妖火吃肉肉');
 """
 #一共改3个地方
@@ -179,5 +179,5 @@ if __name__ == '__main__':
     for i in range(len(user_map)):
         #array = re.split('[;,]', user_map[i])
         sid=re.findall(r"sidyaohuo=(.+?)[;|\s]",user_map[i])
-        print('sid账号信息为：{}\n'.format(sid))
+        #print('sid账号信息为：{}\n'.format(sid))
         main(user_map[i],sid)
