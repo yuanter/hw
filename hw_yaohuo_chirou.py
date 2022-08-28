@@ -18,7 +18,7 @@ PUSH_PLUS_TOKEN = os.getenv("PUSH_PLUS_TOKEN", PUSH_PLUS_TOKEN)
 if PUSH_PLUS_TOKEN is None:
     PUSH_PLUS_TOKEN = ""
 
-
+Rou_IDs = open(r'IDs.txt','w+', encoding='utf-8')
 
 def Get_ID(cookie):
     HEADERS = {
@@ -62,11 +62,9 @@ def main(cookie,sid):
     JingYan = 0
     dic=[]
     reqtext = ["chi", "吃", "c", "恰", "奥利给", "吃了", "吃吃吃","吃吃"]
-    Rou_IDs = open(r'IDs.txt','w+', encoding='utf-8')
     for item in Rou_IDs:
         item = item.replace('\n','')
         dic.append(item)
-    Rou_IDs.close()
     date  = str(datetime.date.today())
     Stime = int(str(datetime.date.today()).split('-')[2])
     IDs = Get_ID(cookie)
@@ -139,6 +137,7 @@ def main(cookie,sid):
             print(ID)
        #time.sleep(2)
 
+    Rou_IDs.close()
     print(YaoJing)
     print(JingYan)
     message = "****妖火吃肉助手****\n"
