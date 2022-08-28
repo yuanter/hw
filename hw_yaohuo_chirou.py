@@ -175,6 +175,6 @@ def pushplus_bot(title,content):
 if __name__ == '__main__':
     user_map = get_cookie()
     for i in range(len(user_map)):
-        print('账号信息为：{}\n'.format(user_map[i]))
+        #print('账号信息为：{}\n'.format(user_map[i]))
         sid=re.findall(r"sidyaohuo=(.+?);",user_map[i])
         main(user_map[i],sid)
