@@ -13,7 +13,7 @@
 ### 拉取脚本完毕后，在同级目录新增一个IDs.txt文件
 ### 需要使用pushplus时，请新建青龙变量PUSH_PLUS_TOKEN，变量值为它的token
 ### 使用
-* 青龙变量名称  
+* ### 青龙变量名称  
 * yaohuo_COOKIE
-* 变量值：  
+* ### 变量值：  
 * 提取整串妖火CK，如果sidyaohuo=xxxx后面没有分号，请加上英文格式的分号;
