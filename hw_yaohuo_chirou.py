@@ -178,6 +178,6 @@ if __name__ == '__main__':
     user_map = get_cookie()
     for i in range(len(user_map)):
         #array = re.split('[;,]', user_map[i])
-        sid=re.findall(r"sidyaohuo=(.+?)[;|\s]",user_map[i])
+        sid=re.findall(r"sidyaohuo=(.+?);",user_map[i])
         #print('sid账号信息为：{}\n'.format(sid))
         main(user_map[i],sid)
