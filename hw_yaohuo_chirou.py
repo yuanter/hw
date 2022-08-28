@@ -3,12 +3,17 @@ cron: 10 0,6-23 * * *
 new Env('妖火吃肉肉');
 """
 #青龙变量一共新增2个地方
-#1.青龙变量新增PUSH_PLUS_TOKEN
-#2.青龙变量新增yaohuo_COOKIE
+#需要使用pushplus时，请新建青龙变量PUSH_PLUS_TOKEN，变量值为它的token
+#使用
+#青龙变量名称  
+#yaohuo_COOKIE
+#变量值：  
+#提取整串妖火CK，如果sidyaohuo=xxxx后面没有分号，请加上英文格式的分号;
 import os
 import requests, time, re,datetime,json,random
 from ql_api import get_envs, disable_env, post_envs, put_envs
 
+#创建肉贴id文件
 txt = open(r'IDs.txt','a+')
 txt.close()
 
