@@ -1,5 +1,5 @@
 """
-cron: 10 0,6-23 * * *
+cron: */10 0,6-23 * * *
 new Env('妖火吃肉肉');
 """
 #青龙变量一共新增2个地方
@@ -14,8 +14,11 @@ import requests, time, re,datetime,json,random
 from ql_api import get_envs, disable_env, post_envs, put_envs
 
 #创建肉贴id文件
-txt = open(r'IDs.txt','a+')
-txt.close()
+if not os.path.exists('IDs.txt'):
+    print('本次不存在IDs文件，执行创建操作')
+    txt = open(r'IDs.txt','a+')
+    txt.close()
+
 
 #这里是微信推送PUSH_PLUS_TOKEN
 PUSH_PLUS_TOKEN = ""
@@ -55,7 +58,7 @@ def get_cookie():
         print('共配置{}条CK,请添加环境变量,或查看环境变量状态'.format(len(ck_list)))
     return ck_list 
 
-def main(cookie,sid):
+def main(cookie,sid,flag):
     Rou_IDs = open(r'IDs.txt','r+', encoding='utf-8')
     HEADERS = {
     'Cookie': cookie,
@@ -125,7 +128,8 @@ def main(cookie,sid):
                     'g': '快速回复'
                 }
                 req_html = requests.post(req_url, headers=HEADERS, data=data)
-            Rou_IDs.write(ID+'\n')
+            if flag == True:
+                Rou_IDs.write(ID+'\n')
             try:
                 i = i+1
                 msg = str(re.findall(r'.+?获得妖晶:(.+?)，获得经验:(.+?)<br/>', req_html,re.DOTALL)[0])
@@ -160,28 +164,34 @@ def pushplus_bot(title,content):
         "content": content,
         "topic": '',
     }
-    body = json.dumps(data).encode(encoding="utf-8")
-    headers = {"Content-Type": "application/json"}
-    response = requests.post(url=url, data=body, headers=headers).json()
-
-    if response["code"] == 200:
-        print("PUSHPLUS 推送成功！")
-
-    else:
-
-        url_old = "http://pushplus.hxtrip.com/send"
-        response = requests.post(url=url_old, data=body, headers=headers).json()
+    try:
+        body = json.dumps(data).encode(encoding="utf-8")
+        headers = {"Content-Type": "application/json"}
+        response = requests.post(url=url, data=body, headers=headers).json()
 
         if response["code"] == 200:
-            print("PUSHPLUS(hxtrip) 推送成功！")
+            print("PUSHPLUS 推送成功！")
 
         else:
-            print("PUSHPLUS 推送失败！")
+
+            url_old = "http://pushplus.hxtrip.com/send"
+            response = requests.post(url=url_old, data=body, headers=headers).json()
+
+            if response["code"] == 200:
+                print("PUSHPLUS(hxtrip) 推送成功！")
+
+            else:
+                print("PUSHPLUS 推送失败！")
+    except Exception as r:
+        print('出现异常：%s' %r)
 
 if __name__ == '__main__':
     user_map = get_cookie()
     for i in range(len(user_map)):
         #array = re.split('[;,]', user_map[i])
         sid=re.findall(r"sidyaohuo=(.+?);",user_map[i])
-        print('sid账号信息为：{}'.format(sid))
-        main(user_map[i],sid)
+        print('账号：{}的sid账号信息为：{}'.format(i,sid))
+        if i == (len(user_map)-1):
+            main(user_map[i],sid,True)
+        else:
+            main(user_map[i],sid,False)
