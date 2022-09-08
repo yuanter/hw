@@ -12,12 +12,21 @@ new Env('妖火吃肉肉');
 import os
 import requests, time, re,datetime,json,random
 from ql_api import get_envs, disable_env, post_envs, put_envs
+import datetime
+
+
+
 
 #创建肉贴id文件
 if not os.path.exists('IDs.txt'):
     print('本次不存在IDs文件，执行创建操作')
     txt = open(r'IDs.txt','a+')
     txt.close()
+#创建记录三天前的时间文件
+if not os.path.exists('date.txt'):
+    print('本次不存在DateFile文件，执行创建操作')
+    date_flie = open(r'date.txt','a+')
+    date_flie.close()
 
 
 #这里是微信推送PUSH_PLUS_TOKEN
@@ -60,6 +69,26 @@ def get_cookie():
 
 def main(cookie,sid,flag):
     Rou_IDs = open(r'IDs.txt','r+', encoding='utf-8')
+
+    #判断时间问题
+    if flag:
+        #先判断时间是否已经到三天
+        date_flie = open(r'date.txt','w+')
+        old_date = None
+        for item in date_flie:
+            old_date = item
+        now_date = datetime.datetime.now()
+        # 加减天数
+        if old_date is None:
+            old_date = now_date.strftime('%Y%m%d')
+            date_flie.write(now_date.strftime('%Y%m%d'))
+        new_date = (now_date + datetime.timedelta(days=-3)).strftime('%Y%m%d')
+        print("当前时间-3天时间："+new_date)
+        if old_date == new_date:
+            date_flie.write(datetime.datetime.now().strftime('%Y%m%d'))
+            Rou_IDs.truncate(0)
+        date_flie.close()
+
     HEADERS = {
     'Cookie': cookie,
     'Host': 'yaohuo.me',
@@ -128,7 +157,7 @@ def main(cookie,sid,flag):
                     'g': '快速回复'
                 }
                 req_html = requests.post(req_url, headers=HEADERS, data=data)
-            if flag == True:
+            if flag:
                 Rou_IDs.write(ID+'\n')
             try:
                 i = i+1
@@ -195,3 +224,5 @@ if __name__ == '__main__':
             main(user_map[i],sid,True)
         else:
             main(user_map[i],sid,False)
+    
+    
