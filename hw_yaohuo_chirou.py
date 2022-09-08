@@ -190,7 +190,7 @@ if __name__ == '__main__':
     for i in range(len(user_map)):
         #array = re.split('[;,]', user_map[i])
         sid=re.findall(r"sidyaohuo=(.+?);",user_map[i])
-        print('账号：{}的sid账号信息为：{}'.format(i,sid))
+        print('账号：{}的sid账号信息为：{}'.format((i+1),sid))
         if i == (len(user_map)-1):
             main(user_map[i],sid,True)
         else:
