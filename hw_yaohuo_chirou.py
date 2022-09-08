@@ -68,6 +68,7 @@ def get_cookie():
     return ck_list 
 
 def main(cookie,sid,flag):
+    print("板块对应：\n*201*-*资源共享*|||*197*-*综合技术*\n*177*-*妖火茶馆*|||*240*-*贴图晒照*\n*204*-*有奖活动*|||*203*-*免流讨论*\n*213*-*悬赏问答*|||*201*-*安卓专区*\n*288*-*网站公告*|||*199*-*站务处理*")
     Rou_IDs = open(r'IDs.txt','r+', encoding='utf-8')
 
     #判断时间问题
@@ -119,6 +120,7 @@ def main(cookie,sid,flag):
             html = page.content.decode('utf-8')
             rou = re.findall(r'.+?<div class="content">.+?余(.+?)\)<br/>每人每日一次派礼', html,re.DOTALL)[0]
             time = int(str(re.findall(r'.+?阅.+?<br/>(.+?)<div class="dashed">', html,re.DOTALL)[0]).split(' ')[1].split('/')[2])
+            classid= re.findall(r'.+?<a href="/bbs/book_list.aspx\?action=class&classid=(.+?)">', html, re.DOTALL)[0]
             if time < Stime:
                 print(str(time)+":不是今天的肉贴，肉臭了不吃。")
                 break
@@ -134,7 +136,7 @@ def main(cookie,sid,flag):
                 'id': ID,
                 'siteid': 1000,
                 'lpage': 1,
-                'classid': 177,
+                'classid': classid,
                 'sid': sid,
                 'g': '快速回复'
             }
@@ -152,7 +154,7 @@ def main(cookie,sid,flag):
                     'id': ID,
                     'siteid': 1000,
                     'lpage': 1,
-                    'classid': 177,
+                    'classid': classid,
                     'sid': sid,
                     'g': '快速回复'
                 }
