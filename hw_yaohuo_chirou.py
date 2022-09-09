@@ -74,21 +74,28 @@ def main(cookie,sid,flag):
     #判断时间问题
     if flag:
         #先判断时间是否已经到三天
-        date_flie = open(r'date.txt','w+')
+        date_flie = open(r'date.txt','r+', encoding='utf-8')
         old_date = None
         for item in date_flie:
+            print("item："+item)
             old_date = item
         now_date = datetime.datetime.now()
+        #print("当前时间旧时间："+old_date)
         # 加减天数
         if old_date is None:
             old_date = now_date.strftime('%Y%m%d')
             date_flie.write(now_date.strftime('%Y%m%d'))
-        new_date = (now_date + datetime.timedelta(days=-3)).strftime('%Y%m%d')
-        print("当前时间-3天时间："+new_date)
-        if old_date == new_date:
-            date_flie.write(datetime.datetime.now().strftime('%Y%m%d'))
-            Rou_IDs.truncate(0)
+        #关闭文件
         date_flie.close()
+        new_date = (now_date + datetime.timedelta(days=-3)).strftime('%Y%m%d')
+        print('打印存储时间：{}，当前时间：{}，以及减去3天的时间：{}'.format(old_date,now_date,new_date))
+        if old_date == new_date:
+            print("当前时间-3天时间："+new_date)
+            date_flie1 = open(r"date.txt", 'w')
+            date_flie1.write(datetime.datetime.now().strftime('%Y%m%d'))
+            date_flie1.close()
+            Rou_IDs.truncate(0)
+        
 
     HEADERS = {
     'Cookie': cookie,
