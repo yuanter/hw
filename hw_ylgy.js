@@ -6,8 +6,8 @@
 
 ================Loon==============
 [Script]
-cron "/10 * * * *" hw_ylgy.js, tag:羊了个羊
-cron "/10 * * * *" script-path=https://raw.githubusercontent.com/yuanter/hw/main/hw_ylgy.js,tag=羊了个羊
+cron "0-59/10 * * * *" hw_ylgy.js, tag:羊了个羊
+cron "0-59/10 * * * *" script-path=https://raw.githubusercontent.com/yuanter/hw/main/hw_ylgy.js,tag=羊了个羊
 */
 const $ = new Env('羊了个羊');
 const needTimes = process.env.ylgy_needTimes
