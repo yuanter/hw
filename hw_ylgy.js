@@ -6,7 +6,7 @@
 
 ================Loon==============
 [Script]
-cron "/10 * * * *" script-path=ylgy.js,tag=羊了个羊
+cron "/10 * * * *" script-path=hw_ylgy.js,tag=羊了个羊
 */
 const needTimes = process.env.ylgy_needTimes
 const token = process.env.ylgy_token
