@@ -24,7 +24,7 @@ const request = axios.create({
     headers: {
         t: token
     },
-    timeout: 10000,
+    timeout: 300000,
 });
 
 function add() {
@@ -68,6 +68,9 @@ async function start(otime) {
             while (otime > _current){
                 let obj = await add();
                 _current = obj.current;
+                if(_current == undefined){
+                    _current = 0
+                }
                 console.log(obj);
             }
             console.log("当前" + _current + "次，已完成。");
