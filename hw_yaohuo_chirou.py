@@ -89,8 +89,8 @@ def main(cookie,sid,flag):
         date_flie.close()
         new_date = (now_date + datetime.timedelta(days=-3)).strftime('%Y%m%d')
         print('打印存储时间：{}，当前时间：{}，以及减去3天的时间：{}'.format(old_date,now_date,new_date))
-        if old_date == new_date:
-            print("当前时间-3天时间："+new_date)
+        if ((int(new_date) - int(old_date)) >= 0):
+            print("开始清理"+str(int(new_date) - int(old_date)+3)+"天之内的帖子记录")
             date_flie1 = open(r"date.txt", 'w')
             date_flie1.write(datetime.datetime.now().strftime('%Y%m%d'))
             date_flie1.close()
