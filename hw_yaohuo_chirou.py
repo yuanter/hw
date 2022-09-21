@@ -13,6 +13,7 @@ import os
 import requests, time, re,datetime,json,random
 from ql_api import get_envs, disable_env, post_envs, put_envs
 import datetime
+import random
 
 
 
@@ -233,5 +234,6 @@ if __name__ == '__main__':
             main(user_map[i],sid,True)
         else:
             main(user_map[i],sid,False)
-    
-    
+            ran_time = random.randint(4, 10)
+            print('随机休眠{}秒执行下一个账号\n'.format(ran_time))
+            time.sleep(ran_time)
