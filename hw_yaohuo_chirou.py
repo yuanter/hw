@@ -106,7 +106,7 @@ def main(cookie,sid,flag):
     YaoJing = 0
     JingYan = 0
     dic=[]
-    reqtext = ["chi", "吃", "c", "恰", "吃肉", "吃了", "吃吃吃","吃吃"]
+    reqtext = ["来吃肉", "吃", "先吃肉", "吃点肉", "吃肉", "吃了", "吃吃吃","吃吃"]
     for item in Rou_IDs:
         item = item.replace('\n','')
         dic.append(item)
