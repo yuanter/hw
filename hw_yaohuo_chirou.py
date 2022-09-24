@@ -191,7 +191,8 @@ def main(cookie,sid,flag):
     message = "助手执行时间："+str(datetime.datetime.now())+"\n"
     message += '本次运行有'+str(i)+"个肉贴\n"
     message += '共吃了' + str(YaoJing) +"妖精，获得"+ str(JingYan)+"经验。\n"
-    pushplus_bot("妖火吃肉小助手",message)
+    if YaoJing > 30:
+        pushplus_bot("妖火吃肉小助手",message)
     print(message)
     Rou_IDs.close()
     
@@ -222,7 +223,7 @@ def pushplus_bot(title,content):
             else:
                 print("PUSHPLUS 推送失败！")
     except Exception as r:
-        print('出现异常：%s' %r)
+        print('PushPlus推送出现异常：%s' %r)
 
 if __name__ == '__main__':
     user_map = get_cookie()
