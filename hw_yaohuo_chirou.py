@@ -235,6 +235,6 @@ if __name__ == '__main__':
             main(user_map[i],sid,True)
         else:
             main(user_map[i],sid,False)
-            ran_time = random.randint(15, 60)
+            ran_time = random.randint(15, 30)
             print('随机休眠{}秒执行下一个账号\n'.format(ran_time))
             time.sleep(ran_time)
