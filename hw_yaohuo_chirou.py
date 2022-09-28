@@ -233,7 +233,7 @@ if __name__ == '__main__':
         print('账号：{}的sid账号信息为：{}'.format((i+1),sid))
         #解决随机时间问题
         ran_time = random.randint(15, 30)
-        print('随机休眠{}秒执行吃肉操作\n'.format(ran_time))
+        print('随机休眠{}秒执行吃肉操作'.format(ran_time))
         time.sleep(ran_time)
         #开始吃肉
         if i == (len(user_map)-1):
