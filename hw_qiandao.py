@@ -11,7 +11,14 @@ import requests
 from notify import send
 from ql_util import get_random_str
 from ql_api import get_envs, disable_env, post_envs, put_envs
+from requests.packages import urllib3
+urllib3.disable_warnings()
 
+
+# 需要安装环境cryptography pyOpenSSL certifi
+# pip install cryptography
+# pip install pyOpenSSL
+# pip install certifi
 
 # 账号or邮箱 密码 格式如下: xxx&pwd=xxx
 # https://aitk.app/wp-login.php签到
@@ -37,13 +44,14 @@ def get_cookie():
 def aitk_login(user):
     url = 'https://aitk.app/wp-login.php'
     headers = {
+        'Host': 'aitk.app',
         'referer': 'https://aitk.app/wp-login.php',
         'content-type': 'application/x-www-form-urlencoded;',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
     }
     data = 'log='+user+'&rememberme=forever&wp-submit=%E7%99%BB%E5%BD%95&redirect_to=https%3A%2F%2Faitk.app%2Fwp-admin%2F&testcookie=1'
     try:
-        res = requests.post(url, headers=headers, data=data).headers.get('set-cookie')
+        res = requests.post(url, headers=headers, data=data, verify=False).headers.get('set-cookie')
         array = re.split('[;,]', res)
         return array[5].strip()
     except:
@@ -60,7 +68,7 @@ def checkin(user,cookie):
         'cookie': cookie,
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
     }
-    r = requests.get(url, headers=headers)
+    r = requests.get(url, headers=headers, verify=False)
     res = r.json()
     if res['status'] == 200:
         print('账号信息：{},签到成功：{}\n'.format(user,res))
