@@ -71,13 +71,14 @@ def checkin(user,cookie):
     r = requests.get(url, headers=headers, verify=False)
     res = r.json()
     if res['status'] == 200:
-        print('账号信息：{},签到成功：{}\n'.format(user,res))
+        print('账号：{},签到成功：{}\n'.format(user,res))
     else:
-        print('账号信息：{},签到状态：{}\n'.format(user,res))
+        print('账号：{},签到状态：{}\n'.format(user,res))
 
 
 if __name__ == '__main__':
     user_map = get_cookie()
     for i in range(len(user_map)):
-        #print('账号信息为：{}'.format(user_map[i]))
-        checkin(user_map[i],aitk_login(user_map[i]))
+        user = re.findall(r'(.+?)&pwd=', user_map[i],re.DOTALL)[0]
+        #print('账号信息为：{}'.format(user))
+        checkin(user,aitk_login(user_map[i]))
