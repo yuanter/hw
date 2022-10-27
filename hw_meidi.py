@@ -21,10 +21,15 @@ urllib3.disable_warnings()
 # pip install pyOpenSSL
 # pip install certifi
 
-# 青龙变量名称  
+# 青龙变量名称（cookie）  
 # Meidi_COOKIE
 # 变量值：  
 # 格式: uid=xxx;sukey=xxx;
+
+# 青龙变量名称（多账号签到间隔时间，可不填，默认间隔15到30秒）  
+# Meidi_Flag
+# 变量值：  
+# 格式: False或者True，False代表不随机，True代表开启随机
 
 # 获取要执行兑换的cookie
 def get_cookie():
@@ -56,13 +61,31 @@ def sign(user,cookie):
 if __name__ == '__main__':
     # 获取cookie等参数
     user_map = get_cookie()
+    #多账号随机间隔执行时间，默认15到30秒之间
+    start_time = 15
+    end_time = 30
+    meidi_Flag = get_envs("Meidi_Flag")
+    flag = True
+    for ck in meidi_Flag:
+        if ck.get('status') == 0:
+            flag_temp = ck.get('value')
+            if flag_temp == 'False':
+                flag = False
+            #判断时间问题
+            if flag == False:
+                start_time = 1
+                end_time = 3
+
     for i in range(len(user_map)):
         user = user_map[i].get('remarks')
         user_cookie = user_map[i].get('value')
-        print('账号：{}的账号信息为：{}'.format((i+1),user))
+        print('开始执行第【{}】个账号【{}】的签到操作'.format((i+1),user))
+        
         #解决随机时间问题
-        ran_time = random.randint(15, 30)
-        print('随机休眠{}秒执行操作'.format(ran_time))
+        ran_time = random.randint(start_time, end_time)
+        if flag == True:
+            print('随机休眠{}秒执行操作'.format(ran_time))
+
         time.sleep(ran_time)
         #开始
         sign(user,user_cookie)
