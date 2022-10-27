@@ -21,6 +21,8 @@ urllib3.disable_warnings()
 # pip install pyOpenSSL
 # pip install certifi
 
+# 抓包链接https://mvip.midea.cn
+
 # 青龙变量名称（cookie）  
 # Meidi_COOKIE
 # 变量值：  
