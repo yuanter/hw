@@ -24,6 +24,8 @@
 * 提取整串妖火CK，如果sidyaohuo=xxxx后面没有分号，请加上英文格式的分号;
 
 # 美的签到得积分
+### 抓包链接https://mvip.midea.cn
+### 使用
 * ### 青龙变量名称（cookie）  
 * Meidi_COOKIE
 * ### 变量值：  
