@@ -1,7 +1,7 @@
 # 脚本拉取
 * ### ql repo https://github.com/yuanter/hw.git "hw_" "" "ql_"
 
-### 若出现错误尝试安装环境cryptography pyOpenSSL certifi
+### 若执行脚本过程出现错误，尝试安装环境cryptography pyOpenSSL certifi
 * pip install cryptography
 * pip install pyOpenSSL
 * pip install certifi
