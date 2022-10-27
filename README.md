@@ -1,13 +1,14 @@
 # 脚本拉取
 * ### ql repo https://github.com/yuanter/hw.git "hw_" "" "ql_"
 
-# 调侃网签到
 ### 若出现错误尝试安装环境cryptography pyOpenSSL certifi
 * pip install cryptography
 * pip install pyOpenSSL
 * pip install certifi
 
 
+
+# 调侃网签到
 ### 官网1：[http://tiaokan.live](http://tiaokan.live)
 ### 官网2：[http://aitk.app/wp-login.php](http://aitk.app/wp-login.php)
 * ### 青龙变量名称  
