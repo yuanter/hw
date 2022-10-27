@@ -49,11 +49,8 @@ def sign(user,cookie):
         'cookie': cookie,
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
     }
-    res = requests.get(url, headers=headers, verify=False)
-    if res['errCode'] == 314:
-        print('账号：{},重复签到：{}\n'.format(user,res['errMsg']))
-    else:
-        print('账号：{},签到状态：{}\n'.format(user,res))
+    res = requests.get(url, headers=headers, verify=False).text
+    print('账号：{},签到状态：{}\n'.format(user,res))
 
 
 if __name__ == '__main__':
@@ -65,7 +62,7 @@ if __name__ == '__main__':
         print('账号：{}的账号信息为：{}'.format((i+1),user))
         #解决随机时间问题
         ran_time = random.randint(15, 30)
-        print('随机休眠{}秒执行吃肉操作'.format(ran_time))
+        print('随机休眠{}秒执行操作'.format(ran_time))
         time.sleep(ran_time)
         #开始
         sign(user,user_cookie)
