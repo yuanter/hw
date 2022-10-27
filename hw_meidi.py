@@ -49,8 +49,7 @@ def sign(user,cookie):
         'cookie': cookie,
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
     }
-    r = requests.get(url, headers=headers, verify=False)
-    res = r.json()
+    res = requests.get(url, headers=headers, verify=False)
     if res['errCode'] == 314:
         print('账号：{},重复签到：{}\n'.format(user,res['errMsg']))
     else:
