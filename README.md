@@ -1,5 +1,5 @@
 # 脚本拉取
-* ### ql repo https://github.com/yuanter/hw.git "hw_" "" "ql_"
+* ### ql repo https://github.com/yuanter/hw.git "hw_" "back_" "ql_"
 
 ### 若执行脚本过程出现错误，尝试安装环境cryptography pyOpenSSL certifi
 * pip install cryptography
