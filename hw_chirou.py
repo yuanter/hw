@@ -48,7 +48,7 @@ def Get_ID(cookie):
         url = 'https://yaohuo.me/bbs/book_list.aspx?action=new&siteid=1000&classid=0&getTotal=2022&page='+str(i)
         pagelist = requests.get(url, headers=HEADERS)
         respons = pagelist.content.decode('utf-8')
-        ID_ALL = re.findall(r'.+?<img src="/NetImages/li.gif" alt="礼"/><a href="/bbs-(.+?).html.+?">', respons,re.DOTALL)
+        ID_ALL = re.findall(r'.+?<img src="/NetImages/li.gif" alt="礼"/><a class="topic-link" href="/bbs-(.+?).html.+?">', respons,re.DOTALL)
         for Id in ID_ALL:
             IDs.append(Id)
     print('本次扫描肉贴列表：')
@@ -69,7 +69,7 @@ def get_cookie():
     return ck_list 
 
 def main(cookie,sid,flag):
-    print("板块对应：\n*201*-*资源共享*|||*197*-*综合技术*\n*177*-*妖火茶馆*|||*240*-*贴图晒照*\n*204*-*有奖活动*|||*203*-*免流讨论*\n*213*-*悬赏问答*|||*201*-*安卓专区*\n*288*-*网站公告*|||*199*-*站务处理*")
+    print("板块对应：\n*201*-*资源共享*|||*197*-*综合技术*\n*177*-*妖火茶馆*|||*240*-*贴图晒照*\n*204*-*有奖活动*|||*203*-*免流讨论*\n*213*-*悬赏问答*|||*201*-*安卓专区*\n*288*-*网站公告*|||*199*-*站务处理*|||*299*-*组队互助*")
     Rou_IDs = open(r'IDs.txt','r+', encoding='utf-8')
 
     #判断时间问题
@@ -106,7 +106,7 @@ def main(cookie,sid,flag):
     YaoJing = 0
     JingYan = 0
     dic=[]
-    reqtext = ["来吃肉", "吃", "先吃肉", "吃点肉", "吃肉", "吃了", "吃吃吃","吃吃"]
+    reqtext = ["来吃肉", "吃", "先吃肉", "吃点肉", "吃肉", "吃了", "吃吃吃","吃吃","吃喔"]
     for item in Rou_IDs:
         item = item.replace('\n','')
         dic.append(item)
