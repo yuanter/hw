@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 cron: */11 0-1,6-23 * * *
 new Env('妖火吃肉肉');
@@ -78,7 +79,6 @@ def main(cookie,sid,flag):
         date_flie = open(r'date.txt','r+', encoding='utf-8')
         old_date = None
         for item in date_flie:
-            print("item："+item)
             old_date = item
         now_date = datetime.datetime.now()
         #print("当前时间旧时间："+old_date)
@@ -126,8 +126,8 @@ def main(cookie,sid,flag):
             url = 'https://yaohuo.me/bbs-'+ID+'.html'
             page = requests.get(url,headers=HEADERS)
             html = page.content.decode('utf-8')
-            rou = re.findall(r'.+?<div class="content">.+?余(.+?)\)<br/>每人每日一次派礼', html,re.DOTALL)[0]
-            time = int(str(re.findall(r'.+?阅.+?<br/>(.+?)<div class="dashed">', html,re.DOTALL)[0]).split(' ')[1].split('/')[2])
+            rou = re.findall(r'.+?<span class="yushuzi" style="padding:.5px;">(.+?)</span>\)', html,re.DOTALL)[0]
+            time = int(str(re.findall(r'.+?阅.+?时间\] (.+?)<div class="dashed">', html,re.DOTALL)[0]).split(' ')[0].split('-')[2])
             classid= re.findall(r'.+?<a href="/bbs/book_list.aspx\?action=class&classid=(.+?)">', html, re.DOTALL)[0]
             if time < Stime:
                 print(str(time)+":不是今天的肉贴，肉臭了不吃。")
